@@ -1,0 +1,14 @@
+{
+    "author": "Mishchenko Vitalii",
+    "name": "Angular-components",
+    "version": "0.0.1",
+    "homepage": "",
+    "licenses": {
+        "type": "MIT"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "gulp": "3.9.0",
+        "gulp-ngdocs": "0.2.13"
+    }
+}
