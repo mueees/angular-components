@@ -8,11 +8,22 @@
  * Test
  *
  *
- * @example
  <example module="mue">
 
  <file name="index.html">
  <tag></tag>
+ </file>
+
+ <file name="script.js">
+
+ </file>
+
+ <file name="style.css">
+ tag {
+        border: 1px solid black;
+        background-color: white;
+        min-height: 20px;
+      }
  </file>
 
  </example>
