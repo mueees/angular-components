@@ -1,3 +1,1 @@
-angular.module('mue', [
-    'mue.tag'
-]);
+angular.module('mue', []);

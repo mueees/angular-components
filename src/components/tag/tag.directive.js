@@ -1,27 +1,29 @@
 /**
  * @ngdoc directive
- * @name mue.tag.directive:mueTag
+ * @name mue.directive:mue
  * @restrict E
- * @element mue-tag
+ * @element tag
  *
  * @description
- * Resize textarea automatically to the size of its text content.
+ * Test
+ *
  *
  * @example
  <example module="mue">
+
  <file name="index.html">
- <mue-tag></mue-tag>
+ <tag></tag>
  </file>
+
  </example>
  */
 
-angular.module('mue.tag')
-    .directive('mueTag', function () {
+angular.module('mue')
+    .directive('tag', function () {
         return {
             restrict: 'E',
-            templateUrl: 'test',
+            template: 'maybe Yes or Maybe No!',
             link: function () {
-                alert(1);
             }
         }
     });
