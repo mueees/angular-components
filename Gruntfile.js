@@ -64,7 +64,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%= srcDir %>/core/mue.module.js', jsFiles],
-                tasks: ['ngtemplates:dist', 'concat:js', 'clean:temp']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']
             },
             html: {
                 files: ['<%= srcDir %>/core/**/*.html'],
@@ -96,12 +96,27 @@ module.exports = function (grunt) {
                     '<%= distDir %>/mue.min.js': '<%= distDir %>/mue.js'
                 }
             }
+        },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            main: {
+                files: [
+                    {
+                        expand: true,
+                        flatten: false,
+                        cwd: '.',
+                        src: '<%= distDir %>/mue.js'
+                    }
+                ]
+            }
         }
     };
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('dist', ['clean:temp', 'clean:dist', 'sass:dist', 'concat:css', 'ngtemplates:dist', 'concat:js', 'uglify:js', 'clean:temp']);
+    grunt.registerTask('dist', ['clean:temp', 'clean:dist', 'sass:dist', 'concat:css', 'ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']);
 
     grunt.registerTask('dev', function () {
         grunt.task.run('dist');

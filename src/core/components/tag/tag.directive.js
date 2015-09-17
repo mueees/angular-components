@@ -15,7 +15,6 @@
  </file>
 
  <file name="script.js">
-
  </file>
 
  <file name="style.css">
@@ -30,7 +29,7 @@
  */
 
 angular.module('mue')
-    .directive('tag', function () {
+    .directive('mueTag', function () {
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/tag/tag.directive.html',
