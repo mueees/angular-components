@@ -2,6 +2,7 @@
   "name": "Vendors",
   "dependencies": {
     "angular": "1.4.5",
-    "angular-animate": "latest"
+    "angular-animate": "latest",
+    "bootstrap-sass": "latest"
   }
 }

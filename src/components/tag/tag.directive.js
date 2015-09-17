@@ -33,8 +33,9 @@ angular.module('mue')
     .directive('tag', function () {
         return {
             restrict: 'E',
-            template: 'maybe Yes or Maybe No!',
+            templateUrl: 'src/components/tag/tag.directive.html',
             link: function () {
+
             }
         }
     });
