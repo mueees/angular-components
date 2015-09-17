@@ -33,7 +33,7 @@ angular.module('mue')
     .directive('tag', function () {
         return {
             restrict: 'E',
-            templateUrl: 'src/components/tag/tag.directive.html',
+            templateUrl: 'src/core/components/tag/tag.directive.html',
             link: function () {
 
             }

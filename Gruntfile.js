@@ -8,7 +8,18 @@ module.exports = function (grunt) {
     var userConfig = require('./build.config.js');
 
     var jsFiles = [
-        'src/components/**/*.js'
+        'src/core/**/*.module.js',
+        'src/core/**/*.config.js',
+        'src/core/**/*.routes.js',
+        'src/core/**/*.constant.js',
+        'src/core/**/*.value.js',
+        'src/core/**/*.run.js',
+        'src/core/**/*.service.js',
+        'src/core/**/*.class.js',
+        'src/core/**/*.directive.js',
+        'src/core/**/*.controller.js',
+        'src/core/**/*.resource.js',
+        'src/core/**/*.filter.js'
     ];
 
     var taskConfig = {
@@ -32,7 +43,7 @@ module.exports = function (grunt) {
                 editExample: true
             },
             api: {
-                src: ['<%= srcDir %>/components/**/*.js'],
+                src: ['<%= srcDir %>/core/**/*.js'],
                 title: 'API Documentation'
             }
         },
@@ -51,9 +62,13 @@ module.exports = function (grunt) {
                 files: ['<%= srcDir %>/scss/**/*.scss'],
                 tasks: ['clean:docs', 'sass:dist', 'concat:css']
             },
+            js: {
+                files: ['<%= srcDir %>/core/mue.module.js', jsFiles],
+                tasks: ['ngtemplates:dist', 'concat:js', 'clean:temp']
+            },
             html: {
-                files: ['src/components/**/*.html'],
-                tasks: ['ngtemplates:development', 'concat:js', 'clean:temp']
+                files: ['<%= srcDir %>/core/**/*.html'],
+                tasks: ['ngtemplates:dist', 'concat:js', 'clean:temp']
             }
         },
         concat: {
@@ -62,7 +77,7 @@ module.exports = function (grunt) {
                 dest: '<%= distDir %>/styles.css'
             },
             js: {
-                src: ['src/components/mue.module.js', '<%= ngtemplates.dist.dest %>', jsFiles],
+                src: ['<%= srcDir %>/core/mue.module.js', '<%= ngtemplates.dist.dest %>', jsFiles],
                 dest: '<%= distDir %>/mue.js'
             }
         },
@@ -71,15 +86,8 @@ module.exports = function (grunt) {
                 options: {
                     module: 'mue'
                 },
-                src: '<%= srcDir %>/components/**/**.html',
+                src: '<%= srcDir %>/core/**/**.html',
                 dest: '<%= srcTemp %>/templates.js'
-            },
-            development: {
-                options: {
-                    module: 'mue'
-                },
-                src: '<%= srcDir %>/components/**/**.html',
-                dest: '<%= developmentDir %>/templates.js'
             }
         },
         uglify: {
@@ -93,9 +101,12 @@ module.exports = function (grunt) {
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('dev', ['clean:temp', 'clean:dist', 'sass:dist', 'concat:css', 'ngtemplates:development', 'watch']);
-
     grunt.registerTask('dist', ['clean:temp', 'clean:dist', 'sass:dist', 'concat:css', 'ngtemplates:dist', 'concat:js', 'uglify:js', 'clean:temp']);
+
+    grunt.registerTask('dev', function () {
+        grunt.task.run('dist');
+        grunt.task.run('watch');
+    });
 
     grunt.registerTask('builddoc', ['clean:docs', 'ngdocs']);
 
