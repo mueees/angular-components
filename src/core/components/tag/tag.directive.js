@@ -28,7 +28,7 @@
  </example>
  */
 
-angular.module('mue')
+angular.module('mue.tag')
     .directive('mueTag', function () {
         return {
             restrict: 'E',

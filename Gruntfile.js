@@ -68,7 +68,7 @@ module.exports = function (grunt) {
             },
             html: {
                 files: ['<%= srcDir %>/core/**/*.html'],
-                tasks: ['ngtemplates:dist', 'concat:js', 'clean:temp']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']
             }
         },
         concat: {

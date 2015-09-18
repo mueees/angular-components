@@ -12,9 +12,23 @@
 <!-- Add libraries -->
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
-<script src="../dist/mue.min.js"></script>
+<script src="../dist/mue.js"></script>
 
-<mue-tag></mue-tag>
+<div ng-controller="Test">
+    {{row}}
+
+    <div mue-tree>
+        <ul mue-tree-nodes ng-model="rows">
+            <li ng-repeat="row in rows" ui-tree-node>
+                <ol ui-tree-nodes ng-model="row.columns">
+                    <li ng-repeat="column in row.columns" mue-tree-node>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+</div>
 
 </body>
 </html>

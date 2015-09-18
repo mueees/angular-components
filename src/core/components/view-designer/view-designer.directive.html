@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div ng-repeat="component in components">
+                <div ng-include="component.url"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <mue-view-layout structure="structure"></mue-view-layout>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>
