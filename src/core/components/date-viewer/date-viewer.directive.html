@@ -1,0 +1,8 @@
+<div ng-switch="mueConfig.type">
+    <span ng-switch-when="1">
+        {{mueConfig.start | date:'dd MMMM yyyy'}}
+    </span>
+    <span ng-switch-when="2">
+        {{mueConfig.start | date:'dd MMMM'}} - {{mueConfig.end | date:'dd MMMM'}}, {{mueConfig.end | date:'yyyy'}}
+    </span>
+</div>

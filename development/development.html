@@ -14,11 +14,19 @@
 
 <script>
     angular.module('development', [
-        'mue.seed'
-    ]);
+        'mue.date-viewer'
+    ]).controller('Test', function ($scope) {
+        $scope.dateViewerConfiguration = {
+            type: 2,
+            start: new Date(),
+            end: new Date()
+        }
+    });
 </script>
 
-<mue-seed></mue-seed>
+<div ng-controller="Test">
+    <mue-date-viewer mue-config="dateViewerConfiguration"></mue-date-viewer>
+</div>
 
 </body>
 </html>
