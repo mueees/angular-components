@@ -14,9 +14,9 @@
 
 <script>
     angular.module('development', [
-        'mue.date-viewer'
+        'mue.date-switcher'
     ]).controller('Test', function ($scope) {
-        $scope.dateViewerConfiguration = {
+        $scope.config = {
             type: 2,
             start: new Date(),
             end: new Date()
@@ -25,7 +25,7 @@
 </script>
 
 <div ng-controller="Test">
-    <mue-date-viewer mue-config="dateViewerConfiguration"></mue-date-viewer>
+    <mue-date-switcher mue-config="config"></mue-date-switcher>
 </div>
 
 </body>

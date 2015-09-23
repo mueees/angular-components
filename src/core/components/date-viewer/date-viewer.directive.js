@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name mue.directive:mueDateViewer
+ * @name mue.date-viewer.directive:mueDateViewer
  * @restrict E
  * @element mue-date-viewer
  *
@@ -38,6 +38,24 @@ angular.module('mue.date-viewer')
                 mueConfig: '='
             },
             link: function (scope, element) {
+                scope.today = function () {
+
+                };
+
+                scope.prev = function () {
+
+                };
+
+                scope.next = function () {
+
+                };
+
+
+                scope.dateViewerConfiguration = {
+                    type: 1,
+                    start: new Date(),
+                    end: new Date()
+                }
             }
         }
     });

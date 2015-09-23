@@ -1,28 +1,23 @@
 /**
  * @ngdoc directive
- * @name mue.directive:seed
+ * @name mue.seed.directive:mueSeed
  * @restrict E
- * @element seed
+ * @element mue-seed
  *
  * @description
  * Test
  *
  *
- <example module="mue">
+ <example module="test">
 
  <file name="index.html">
+ <div ng-controller="Test">
  <mue-seed></mue-seed>
+ </div>
  </file>
 
  <file name="script.js">
- </file>
-
- <file name="style.css">
- mue-seed {
-        border: 1px solid black;
-        background-color: white;
-        min-height: 20px;
-      }
+ angular.module('test', ['mue.seed']).controller('Test', function($scope){});
  </file>
 
  </example>
@@ -32,9 +27,6 @@ angular.module('mue.seed')
     .directive('mueSeed', function () {
         return {
             restrict: 'E',
-            templateUrl: 'src/core/components/seed/seed.directive.html',
-            link: function () {
-                console.log('test');
-            }
+            templateUrl: 'src/core/components/seed/seed.directive.html'
         }
     });
