@@ -1,8 +1,8 @@
 /**
  * @ngdoc directive
- * @name mue.directive:mue
+ * @name mue.directive:seed
  * @restrict E
- * @element tag
+ * @element seed
  *
  * @description
  * Test
@@ -11,14 +11,14 @@
  <example module="mue">
 
  <file name="index.html">
- <tag></tag>
+ <mue-seed></mue-seed>
  </file>
 
  <file name="script.js">
  </file>
 
  <file name="style.css">
- tag {
+ mue-seed {
         border: 1px solid black;
         background-color: white;
         min-height: 20px;
@@ -28,13 +28,13 @@
  </example>
  */
 
-angular.module('mue.tag')
-    .directive('mueTag', function () {
+angular.module('mue.seed')
+    .directive('mueSeed', function () {
         return {
             restrict: 'E',
-            templateUrl: 'src/core/components/tag/tag.directive.html',
+            templateUrl: 'src/core/components/seed/seed.directive.html',
             link: function () {
-
+                console.log('test');
             }
         }
     });

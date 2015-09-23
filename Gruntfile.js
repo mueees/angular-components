@@ -77,14 +77,14 @@ module.exports = function (grunt) {
                 dest: '<%= distDir %>/styles.css'
             },
             js: {
-                src: ['<%= srcDir %>/core/mue.module.js', '<%= ngtemplates.dist.dest %>', jsFiles],
+                src: ['<%= srcDir %>/core/template.module.js', '<%= ngtemplates.dist.dest %>', jsFiles],
                 dest: '<%= distDir %>/mue.js'
             }
         },
         ngtemplates: {
             dist: {
                 options: {
-                    module: 'mue'
+                    module: 'mue.template'
                 },
                 src: '<%= srcDir %>/core/**/**.html',
                 dest: '<%= srcTemp %>/templates.js'

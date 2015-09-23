@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="mue">
+<html ng-app="development">
 <head lang="en">
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="../dist/styles.css"/>
-
     <title>Components</title>
 </head>
 <body>
@@ -14,21 +12,13 @@
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../dist/mue.js"></script>
 
-<div ng-controller="Test">
-    {{row}}
+<script>
+    angular.module('development', [
+        'mue.seed'
+    ]);
+</script>
 
-    <div mue-tree>
-        <ul mue-tree-nodes ng-model="rows">
-            <li ng-repeat="row in rows" ui-tree-node>
-                <ol ui-tree-nodes ng-model="row.columns">
-                    <li ng-repeat="column in row.columns" mue-tree-node>
-                    </li>
-                </ol>
-            </li>
-        </ul>
-    </div>
-
-</div>
+<mue-seed></mue-seed>
 
 </body>
 </html>
