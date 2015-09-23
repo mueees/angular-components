@@ -1,10 +1,8 @@
 {
   "name": "Vendors",
   "dependencies": {
-    "angular": "1.4.5",
+    "angular": "1.4.6",
     "angular-animate": "latest",
-    "bootstrap-sass": "latest",
-    "angular-ui-tree": "latest",
-    "backbone": "latest"
+    "bootstrap-sass": "latest"
   }
 }
