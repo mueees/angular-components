@@ -87,7 +87,7 @@ module.exports = function (grunt) {
                     module: 'mue.template'
                 },
                 src: '<%= srcDir %>/core/**/**.html',
-                dest: '<%= srcTemp %>/templates.js'
+                dest: '<%= tempDir %>/templates.js'
             }
         },
         uglify: {
