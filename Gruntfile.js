@@ -32,10 +32,13 @@ module.exports = function (grunt) {
             options: {
                 dest: 'docs',
                 html5Mode: false,
-                styles: [],
+                styles: [
+                    '<%= distDir %>/styles.css'
+                ],
                 scripts: [
                     'bower_components/angular/angular.js',
                     'bower_components/angular-animate/angular-animate.js',
+                    'bower_components/moment/moment.js',
                     '<%= distDir %>/mue.js'
                 ],
                 sourceLink: true,

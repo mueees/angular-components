@@ -10,7 +10,7 @@
  *
  <example module="test">
 
-<file name="index.html">
+ <file name="index.html">
  <div ng-controller="Test">
  <mue-date-viewer mue-config="dateViewerConfiguration"></mue-date-viewer>
  </div>
@@ -38,24 +38,7 @@ angular.module('mue.date-viewer')
                 mueConfig: '='
             },
             link: function (scope, element) {
-                scope.today = function () {
 
-                };
-
-                scope.prev = function () {
-
-                };
-
-                scope.next = function () {
-
-                };
-
-
-                scope.dateViewerConfiguration = {
-                    type: 1,
-                    start: new Date(),
-                    end: new Date()
-                }
             }
         }
     });

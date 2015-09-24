@@ -10,6 +10,7 @@
 <!-- Add libraries -->
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/moment/moment.js"></script>
 <script src="../dist/mue.js"></script>
 
 <script>
@@ -19,8 +20,12 @@
         $scope.config = {
             type: 2,
             start: new Date(),
-            end: new Date()
-        }
+            end: moment(new Date()).add(5, 'd').toDate()
+        };
+
+        $scope.$watch('config.start', function () {
+            console.log($scope.config.start);
+        });
     });
 </script>
 
