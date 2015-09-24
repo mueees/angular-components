@@ -1,4 +1,4 @@
 (function () {
     'use strict';
-    angular.module('mue.security', []);
+    angular.module('mue.core.security', []);
 })();
