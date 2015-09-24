@@ -114,12 +114,32 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        copy: {
+            main: {
+                expand: true,
+                cwd: 'src/scss',
+                src: '**',
+                dest: 'dist/src/scss',
+                flatten: false
+            }
         }
     };
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('dist', ['clean:temp', 'clean:dist', 'sass:dist', 'concat:css', 'ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']);
+    grunt.registerTask('dist', [
+        'clean:temp',
+        'clean:dist',
+        'sass:dist',
+        'concat:css',
+        'ngtemplates:dist',
+        'concat:js',
+        'ngAnnotate:main',
+        'copy:main',
+        'uglify:js',
+        'clean:temp'
+    ]);
 
     grunt.registerTask('dev', function () {
         grunt.task.run('dist');
