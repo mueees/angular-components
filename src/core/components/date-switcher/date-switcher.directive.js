@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name mue.date-switcher.directive:mueDateSwitcher
+ * @name mue.core.date-switcher.directive:mueDateSwitcher
  * @restrict E
  * @element mue-date-switcher
  *
@@ -17,7 +17,7 @@
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.date-switcher']).controller('Test', function($scope){
+ angular.module('test', ['mue.core.date-switcher']).controller('Test', function($scope){
      $scope.config = {
             type: 2,
             start: new Date(),
@@ -29,7 +29,7 @@
  </example>
  */
 
-angular.module('mue.date-switcher')
+angular.module('mue.core.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
             restrict: 'E',

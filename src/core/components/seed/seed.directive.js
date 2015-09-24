@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name mue.seed.directive:mueSeed
+ * @name mue.core.seed.directive:mueSeed
  * @restrict E
  * @element mue-seed
  *
@@ -17,13 +17,13 @@
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.seed']).controller('Test', function($scope){});
+ angular.module('test', ['mue.core.seed']).controller('Test', function($scope){});
  </file>
 
  </example>
  */
 
-angular.module('mue.seed')
+angular.module('mue.core.seed')
     .directive('mueSeed', function () {
         return {
             restrict: 'E',

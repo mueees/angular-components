@@ -1,5 +1,5 @@
 (function(){
-    angular.module('mue.core.date-viewer', [
+    angular.module('mue.core.list-group', [
         'mue.template'
     ]);
 })();

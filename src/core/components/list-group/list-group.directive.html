@@ -1,0 +1,15 @@
+<div class="list-group mue-list-group " ng-class="{'mue-list-group-flat': mueConfig.ui.flat, 'mue-list-group-dark': mueConfig.ui.dark}">
+    <div ng-click="mueConfig.clickHandler(item)" ng-class="{active: item.active}" ng-repeat="item in mueConfig.items" class="list-group-item list-group-item-lagoon">
+        <div class="pull-left">
+            <i class="fa fa-{{item.icon}} mue-icon"></i>
+        </div>
+        <div class="pull-right">
+            <button ng-click="action.handler(item)" ng-repeat="action in item.actions" class="btn btn-clear">
+                <i class="fa fa-{{action.icon}} mue-icon"></i>
+            </button>
+        </div>
+        <div class="mue-list-group-content">
+            {{item.text}}
+        </div>
+    </div>
+</div>

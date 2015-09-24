@@ -33,12 +33,15 @@ module.exports = function (grunt) {
                 dest: 'docs',
                 html5Mode: false,
                 styles: [
+                    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',
+                    '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css',
                     '<%= distDir %>/styles.css'
                 ],
                 scripts: [
                     'bower_components/angular/angular.js',
                     'bower_components/angular-animate/angular-animate.js',
                     'bower_components/moment/moment.js',
+                    'bower_components/lodash/lodash.js',
                     '<%= distDir %>/mue.js'
                 ],
                 sourceLink: true,
@@ -46,7 +49,7 @@ module.exports = function (grunt) {
                 editExample: true
             },
             api: {
-                src: ['<%= srcDir %>/core/**/*.js'],
+                src: ['<%= srcDir %>/core/components/**/*.js'],
                 title: 'API Documentation'
             }
         },

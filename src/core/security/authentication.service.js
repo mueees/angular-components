@@ -11,13 +11,13 @@
  */
 (function () {
     'use strict';
-    angular.module('mue.core.security').provider('rxAuthentication', function () {
+    angular.module('mue.core.security').provider('mueAuthentication', function () {
         var _loginState = null,
             _appState = null;
 
         /**
          * @ngdoc method
-         * @name rxAuthenticationProvider#loginState
+         * @name mueAuthenticationProvider#loginState
          *
          * @description
          * This method is getter / setter.
@@ -33,8 +33,6 @@
          */
         function loginState(stateName, stateParams) {
             if (arguments.length) {
-                rx.assert.assertStringWithLength(stateName, 'Invalid login state name.');
-
                 _loginState = {
                     name: stateName,
                     params: stateParams
@@ -46,7 +44,7 @@
 
         /**
          * @ngdoc method
-         * @name rxAuthenticationProvider#appState
+         * @name mueAuthenticationProvider#appState
          *
          * @description
          * This method is getter / setter.
@@ -66,17 +64,15 @@
          */
         function appState(stateName, stateParams) {
             if (arguments.length) {
-                if (rx.util.isStringWithLength(stateName)) {
+                if (_.isString(stateName)) {
                     _appState = {
                         name: stateName,
                         params: stateParams
                     };
-                } else if (rx.util.isFunction(stateName)) {
+                } else if (_.isFunction(stateName)) {
                     _appState = stateName;
-                } else if (rx.util.isObject(stateName) && rx.util.isStringWithLength(stateName.name)) {
+                } else if (_.isObject(stateName) && _.isString(stateName.name)) {
                     _appState = stateName;
-                } else {
-                    rx.assert.fail("Invalid appState.");
                 }
             }
 
@@ -87,16 +83,16 @@
             loginState: loginState,
             appState: appState,
 
-            $get: function ($state, $rootScope, $q, rxAuthUserResource, rxUserResource, rxSession, RX_AUTH_EVENTS) {
+            $get: function ($state, $rootScope, $q, mueAuthUserResource, rxUserResource, rxSession, RX_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
-                    throw new Error('rxAuthentication service has not been configured properly.');
+                    throw new Error('mueAuthentication service has not been configured properly.');
                 }
 
                 var afterLoginState = _appState;
 
                 /**
                  * @ngdoc method
-                 * @name rxAuthentication#login
+                 * @name mueAuthentication#login
                  *
                  * @description
                  * Authenticates the user.
@@ -106,7 +102,7 @@
                  * @returns {Promise} A promise that will be resolved when a user is authenticated.
                  */
                 function login(credentials) {
-                    return rxAuthUserResource.login(credentials);
+                    return mueAuthUserResource.login(credentials);
                 }
 
                 /**

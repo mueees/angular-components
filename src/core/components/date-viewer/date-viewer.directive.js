@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name mue.date-viewer.directive:mueDateViewer
+ * @name mue.core.date-viewer.directive:mueDateViewer
  * @restrict E
  * @element mue-date-viewer
  *
@@ -17,7 +17,7 @@
  </file>
 
  <file name="script.js">
- angular.module('test', ['mue.date-viewer']).controller('Test', function($scope){
+ angular.module('test', ['mue.core.date-viewer']).controller('Test', function($scope){
  $scope.dateViewerConfiguration = {
             type: 2,
             start: new Date(),
@@ -29,7 +29,7 @@
  </example>
  */
 
-angular.module('mue.date-viewer')
+angular.module('mue.core.date-viewer')
     .directive('mueDateViewer', function () {
         return {
             restrict: 'E',

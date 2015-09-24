@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../dist/styles.css"/>
     <title>Components</title>
 </head>
@@ -13,27 +14,64 @@
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-animate/angular-animate.js"></script>
 <script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/lodash/lodash.js"></script>
 <script src="../dist/mue.js"></script>
 
 <script>
     angular.module('development', [
-        'mue.date-switcher'
+        'mue.core.list-group'
     ]).controller('Test', function ($scope) {
-        $scope.config = {
-            type: 2,
-            start: new Date(),
-            end: moment(new Date()).add(5, 'd').toDate()
-        };
+        function _deleteCalendar(item) {
+            _.remove($scope.config.items, function (n) {
+                return n.id == item.id;
+            });
+        }
 
-        $scope.$watch('config.start', function () {
-            console.log($scope.config.start);
-        });
+        function _showMenu(item) {
+            console.log('showMenu');
+        }
+
+        var actions = [
+            {
+                icon: 'trash',
+                handler: _deleteCalendar
+            },
+            {
+                icon: 'gear',
+                handler: _showMenu
+            }
+        ];
+
+        $scope.config = {
+            clickHandler: function (item) {
+                item.active = !item.active;
+            },
+
+            items: [
+                {
+                    id: '1',
+                    active: false,
+                    text: 'Birthday',
+                    icon: 'desktop',
+                    actions: actions
+                },
+                {
+                    id: '2',
+                    active: true,
+                    text: 'Holiday',
+                    icon: 'trash'
+                }
+            ],
+            ui: {
+                flat: true,
+                dark: false
+            }
+        };
     });
 </script>
 
 <div ng-controller="Test">
-    <mue-date-switcher mue-config="config"></mue-date-switcher>
+    <mue-list-group mue-config="config"></mue-list-group>
 </div>
-
 </body>
 </html>

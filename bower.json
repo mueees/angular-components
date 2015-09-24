@@ -3,6 +3,7 @@
   "dependencies": {
     "angular": "1.4.6",
     "angular-animate": "latest",
+    "lodash": "latest",
     "moment": "latest"
   }
 }
