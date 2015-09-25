@@ -83,7 +83,7 @@
             loginState: loginState,
             appState: appState,
 
-            $get: function ($state, $rootScope, $q, mueAuthUserResource, rxUserResource, rxSession, RX_AUTH_EVENTS) {
+            $get: function ($state, $rootScope, $q, mueAuthUserResource, mueUserResource, mueSession, MUE_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
                     throw new Error('mueAuthentication service has not been configured properly.');
                 }
@@ -96,18 +96,14 @@
                  *
                  * @description
                  * Authenticates the user.
-                 *
-                 * @param {Object} credentials User's credentials.
-                 *
-                 * @returns {Promise} A promise that will be resolved when a user is authenticated.
                  */
-                function login(credentials) {
-                    return mueAuthUserResource.login(credentials);
+                function login() {
+                    return mueAuthUserResource.login();
                 }
 
                 /**
                  * @ngdoc method
-                 * @name rxAuthentication#logout
+                 * @name mueAuthentication#logout
                  *
                  * @description
                  * Signs the user out of the application.
@@ -118,7 +114,7 @@
                     var promise = rxAuthUserResource.logout();
 
                     var _destroySession = function () {
-                        rxSession.destroy();
+                        mueSession.destroy();
                     };
 
                     promise.then(_destroySession, _destroySession);
@@ -138,11 +134,11 @@
                 function initSession() {
                     var deferred = $q.defer();
 
-                    if (rxSession.isAlive()) {
+                    if (mueSession.isAlive()) {
                         deferred.resolve();
                     } else {
-                        rxUserResource.getCurrentUser().then(function (user) {
-                            rxSession.create(user.plain());
+                        mueUserResource.getCurrentUser().then(function (user) {
+                            mueSession.create(user.plain());
                             deferred.resolve();
                         });
                     }
@@ -164,6 +160,7 @@
                     }
 
                     $state.go(targetState.name, targetState.params);
+
                     afterLoginState = _appState;
                 }
 
@@ -180,20 +177,21 @@
                     }
                 });
 
-                $rootScope.$on(RX_AUTH_EVENTS.notAuthenticated, function () {
-                    rxSession.destroy();
+                $rootScope.$on(MUE_AUTH_EVENTS.notAuthenticated, function () {
+                    mueSession.destroy();
                     _redirectToLoginState();
                 });
 
-                $rootScope.$on(RX_AUTH_EVENTS.loginSuccess, _redirectToTargetState);
+                $rootScope.$on(MUE_AUTH_EVENTS.loginSuccess, _redirectToTargetState);
 
                 function _onLogout() {
                     afterLoginState = _appState;
                     _redirectToLoginState();
                 }
 
-                $rootScope.$on(RX_AUTH_EVENTS.logoutSuccess, _onLogout);
-                $rootScope.$on(RX_AUTH_EVENTS.logoutFailed, _onLogout);
+                $rootScope.$on(MUE_AUTH_EVENTS.logoutSuccess, _onLogout);
+
+                $rootScope.$on(MUE_AUTH_EVENTS.logoutFailed, _onLogout);
 
                 return {
                     login: login,

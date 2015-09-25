@@ -4,6 +4,9 @@
     "angular": "1.4.6",
     "angular-animate": "latest",
     "lodash": "latest",
-    "moment": "latest"
+    "restangular": "latest",
+    "moment": "latest",
+    "angular-growl": "0.4.0",
+    "angular-ui-router": "latest"
   }
 }

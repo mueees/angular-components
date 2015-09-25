@@ -1,0 +1,16 @@
+<div class="panel mue-panel mue-card mue-card-lagoon">
+    <div class="panel-body">
+        <div class="mue-card-icon">
+            <i class="fa fa-calendar mue-icon"></i>
+        </div>
+
+        <h4 class="mue-card-title">{{mueConfig.name || 'New Application'}}</h4>
+
+        <div class="mue-card-description" ng-if="mueConfig.description">
+            {{mueConfig.description}}
+        </div>
+
+        <button ng-click="login()" class="btn btn-action btn-strawberry btn-block">{{mueConfig.action || 'Login'}}
+        </button>
+    </div>
+</div>
