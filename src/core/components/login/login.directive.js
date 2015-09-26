@@ -24,7 +24,7 @@
  */
 
 angular.module('mue.core.login')
-    .directive('mueLogin', function (mueAuthentication) {
+    .directive('mueLogin', function (mueAuthentication, MUE_AUTH_EVENTS, $rootScope) {
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/login/login.directive.html',
@@ -33,8 +33,8 @@ angular.module('mue.core.login')
             },
             link: function (scope) {
                 scope.login = function () {
-                    mueAuthentication.login().then(function () {
-                        $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess);
+                    mueAuthentication.login().then(function (data) {
+                        $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess, data);
                     });
                 }
             }

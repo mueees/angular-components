@@ -83,7 +83,7 @@
             loginState: loginState,
             appState: appState,
 
-            $get: function ($state, $rootScope, $q, mueAuthUserResource, mueUserResource, mueSession, MUE_AUTH_EVENTS) {
+            $get: function ($state, $rootScope, $q, mueAuthUserResource, mueUserResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
                     throw new Error('mueAuthentication service has not been configured properly.');
                 }
@@ -111,15 +111,10 @@
                  * @returns {Promise} A promise that will be resolved when a user is logged out, or if the logout failed.
                  */
                 function logout() {
-                    var promise = rxAuthUserResource.logout();
+                    mueToken.destroy();
+                    mueSession.destroy();
 
-                    var _destroySession = function () {
-                        mueSession.destroy();
-                    };
-
-                    promise.then(_destroySession, _destroySession);
-
-                    return promise;
+                    $rootScope.$broadcast(MUE_AUTH_EVENTS.logoutSuccess);
                 }
 
                 /**
@@ -146,14 +141,16 @@
                     return deferred.promise;
                 }
 
-                function _redirectToTargetState() {
+                function _loginSuccessHandler(data){
+                    mueToken.create(data.client_token);
+
                     var targetState = afterLoginState;
 
-                    if (rx.util.isFunction(targetState)) {
+                    if (_.isFunction(targetState)) {
                         targetState = targetState();
                     }
 
-                    if (rx.util.isString(targetState)) {
+                    if (_.isString(targetState)) {
                         targetState = {
                             name: targetState
                         };
@@ -182,7 +179,7 @@
                     _redirectToLoginState();
                 });
 
-                $rootScope.$on(MUE_AUTH_EVENTS.loginSuccess, _redirectToTargetState);
+                $rootScope.$on(MUE_AUTH_EVENTS.loginSuccess, _loginSuccessHandler);
 
                 function _onLogout() {
                     afterLoginState = _appState;

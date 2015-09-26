@@ -22,23 +22,17 @@
 
 <script>
     angular.module('development', [
-        'mue.core.login'
+        'mue.core.header'
     ])
-            .config(function (mueAuthenticationProvider) {
-                mueAuthenticationProvider.loginState('login');
-                mueAuthenticationProvider.appState('home');
-            })
             .controller('Test', function ($scope) {
                 $scope.config = {
-                    name: 'Calendar',
-                    description: 'Event and task manager',
-                    action: 'Enter'
+                    name: 'Calendar'
                 };
             });
 </script>
 
 <div ng-controller="Test">
-    <mue-login mue-config="config"></mue-login>
+    <mue-header mue-config="config"></mue-header>
 </div>
 </body>
 </html>
