@@ -8,19 +8,6 @@
  * Test
  *
  *
- <example module="test">
-
- <file name="index.html">
- <div ng-controller="Test">
- <mue-login></mue-login>
- </div>
- </file>
-
- <file name="script.js">
- angular.module('test', ['mue.core.seed']).controller('Test', function($scope){});
- </file>
-
- </example>
  */
 
 angular.module('mue.core.login')

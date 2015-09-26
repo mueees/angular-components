@@ -83,7 +83,7 @@
             loginState: loginState,
             appState: appState,
 
-            $get: function ($state, $rootScope, $q, mueAuthUserResource, mueUserResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
+            $get: function ($state, $rootScope, $q, mueAuthUserResource, MueUserResource, MueResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
                     throw new Error('mueAuthentication service has not been configured properly.');
                 }
@@ -132,8 +132,8 @@
                     if (mueSession.isAlive()) {
                         deferred.resolve();
                     } else {
-                        mueUserResource.getCurrentUser().then(function (user) {
-                            mueSession.create(user.plain());
+                        MueUserResource.getCurrentUser().then(function (user) {
+                            mueSession.create(user);
                             deferred.resolve();
                         });
                     }
@@ -141,7 +141,7 @@
                     return deferred.promise;
                 }
 
-                function _loginSuccessHandler(data){
+                function _loginSuccessHandler(scope, data) {
                     mueToken.create(data.client_token);
 
                     var targetState = afterLoginState;
@@ -189,6 +189,19 @@
                 $rootScope.$on(MUE_AUTH_EVENTS.logoutSuccess, _onLogout);
 
                 $rootScope.$on(MUE_AUTH_EVENTS.logoutFailed, _onLogout);
+
+                MueResource.addFullRequestInterceptor(function (element, operation, route, url, headers, params, httpConfig) {
+                    if(mueToken.hasToken()){
+                        headers['Authorization'] = 'Bearer ' + mueToken.getToken();
+                    }
+
+                    return {
+                        element: element,
+                        params: params,
+                        headers: headers,
+                        httpConfig: httpConfig
+                    };
+                });
 
                 return {
                     login: login,

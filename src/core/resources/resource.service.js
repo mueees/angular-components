@@ -1,8 +1,8 @@
 (function () {
     'use strict';
-    angular.module('mue.core.resources').factory('mueResource', function (Restangular) {
+    angular.module('mue.core.resources').factory('MueResource', function (Restangular) {
         return Restangular.withConfig(function (RestangularConfigurer) {
-            RestangularConfigurer.setBaseUrl('/api');
+            RestangularConfigurer.setBaseUrl('http://localhost:10002/api');
         });
     });
 })();

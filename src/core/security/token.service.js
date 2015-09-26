@@ -18,7 +18,7 @@
         }
 
         function _getToken() {
-            localStorage.getItem(itemName);
+            return localStorage.getItem(itemName);
         }
 
         function _hasToken() {
