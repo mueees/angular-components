@@ -1,6 +1,6 @@
 (function(){
-    angular.module('mue.core.date-switcher', [
+    angular.module('mue.core.components.date-switcher', [
         'mue.template',
-        'mue.core.date-viewer'
+        'mue.core.components.date-viewer'
     ]);
 })();

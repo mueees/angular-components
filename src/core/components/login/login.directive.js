@@ -10,7 +10,7 @@
  *
  */
 
-angular.module('mue.core.login')
+angular.module('mue.core.components.login')
     .directive('mueLogin', function (mueAuthentication, MUE_AUTH_EVENTS, $rootScope) {
         return {
             restrict: 'E',

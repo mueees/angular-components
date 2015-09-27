@@ -71,7 +71,7 @@
  </example>
  */
 
-angular.module('mue.core.list-group')
+angular.module('mue.core.components.list-group')
     .directive('mueListGroup', function () {
         return {
             restrict: 'E',

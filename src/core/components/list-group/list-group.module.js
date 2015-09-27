@@ -1,5 +1,5 @@
 (function(){
-    angular.module('mue.core.list-group', [
+    angular.module('mue.core.components.list-group', [
         'mue.template'
     ]);
 })();

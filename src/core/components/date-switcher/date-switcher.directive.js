@@ -29,7 +29,7 @@
  </example>
  */
 
-angular.module('mue.core.date-switcher')
+angular.module('mue.core.components.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
             restrict: 'E',

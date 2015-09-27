@@ -29,7 +29,7 @@
  </example>
  */
 
-angular.module('mue.core.date-viewer')
+angular.module('mue.core.components.date-viewer')
     .directive('mueDateViewer', function () {
         return {
             restrict: 'E',

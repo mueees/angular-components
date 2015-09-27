@@ -23,7 +23,7 @@
  </example>
  */
 
-angular.module('mue.core.seed')
+angular.module('mue.core.components.seed')
     .directive('mueSeed', function () {
         return {
             restrict: 'E',

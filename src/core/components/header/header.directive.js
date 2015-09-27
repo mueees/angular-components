@@ -23,7 +23,7 @@
  </example>
  */
 
-angular.module('mue.core.header')
+angular.module('mue.core.components.header')
     .directive('mueHeader', function (mueAuthentication) {
         return {
             restrict: 'E',

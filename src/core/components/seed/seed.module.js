@@ -1,5 +1,5 @@
 (function(){
-    angular.module('mue.core.seed', [
+    angular.module('mue.core.components.seed', [
         'mue.template'
     ]);
 })();
