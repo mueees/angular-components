@@ -4,7 +4,7 @@
         // decorate angular $exceptionHandler service to intercept script errors
         $provide.decorator('$exceptionHandler', function ($delegate, $injector) {
             return function (exception, cause) {
-                $injector.get('rxScriptErrorHandler').handleScriptError(exception, cause);
+                $injector.get('mueScriptErrorHandler').handleScriptError(exception, cause);
                 $delegate(exception, cause);
             };
         });
