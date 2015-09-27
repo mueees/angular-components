@@ -66,15 +66,15 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: ['<%= srcDir %>/scss/**/*.scss'],
-                tasks: ['clean:docs', 'sass:dist', 'concat:css']
+                tasks: ['clean:docs', 'sass:dist', 'concat:css', 'copy:dist']
             },
             js: {
                 files: ['<%= srcDir %>/core/mue.module.js', jsFiles],
-                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'copy:dist']
             },
             html: {
                 files: ['<%= srcDir %>/core/**/*.html'],
-                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'copy:dist']
             }
         },
         concat: {
@@ -125,6 +125,24 @@ module.exports = function (grunt) {
                 src: '**',
                 dest: 'dist/src/scss',
                 flatten: false
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: '**',
+                        dest: '../calendar-client-angular/app/vendor/components',
+                        flatten: false
+                    },
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: '**',
+                        dest: '../calendar-client-angular/build/app/vendor/components',
+                        flatten: false
+                    }
+                ]
             }
         }
     };
@@ -141,7 +159,8 @@ module.exports = function (grunt) {
         'ngAnnotate:main',
         'copy:main',
         'uglify:js',
-        'clean:temp'
+        'clean:temp',
+        'copy:dist'
     ]);
 
     grunt.registerTask('dev', function () {

@@ -22,17 +22,16 @@
 
 <script>
     angular.module('development', [
-        'mue.core.header'
+        'mue.core.calendar-manager'
     ])
             .controller('Test', function ($scope) {
-                $scope.config = {
-                    name: 'Calendar'
-                };
+
+
             });
 </script>
 
 <div ng-controller="Test">
-    <mue-header mue-config="config"></mue-header>
+    <mue-calendar-manager mue-config="config"> </mue-calendar-manager>
 </div>
 </body>
 </html>

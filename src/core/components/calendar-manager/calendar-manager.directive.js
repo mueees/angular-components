@@ -23,48 +23,100 @@
  */
 
 angular.module('mue.core.calendar-manager')
-    .directive('mueCalendarManager', function () {
+    .directive('mueCalendarManager', function (MueCalendarResource, $timeout) {
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/calendar-manager/calendar-manager.directive.html',
+            scope: {
+                mueConfig: '='
+            },
             link: function (scope, element) {
                 scope.title = 'My calendars';
 
-                function _deleteCalendar(){
-
+                function deleteHandler() {
+                    console.log('delete handler');
                 }
 
-                function _showMenu(){
+                function settingHandler() {
+                    console.log('setting handler');
+                }
 
+                function clickHandler(item) {
+                    item.active = !item.active;
+
+                    _.find(scope.mueConfig.calendars, {
+                        _id: item._id
+                    }).active = item.active;
+
+                    MueCalendarResource.edit({
+                        _id: item._id,
+                        active: item.active
+                    });
                 }
 
                 var actions = [
                     {
-                        icon: 'trash',
-                        handler: _deleteCalendar
+                        handler: deleteHandler,
+                        icon: 'trash'
                     },
                     {
-                        icon: 'gear',
-                        handler: _showMenu
+                        handler: settingHandler,
+                        icon: 'gear'
                     }
                 ];
 
-                scope.listConfig = [
-                    {
-                        id: '1',
-                        active: false,
-                        text: 'Birthday',
-                        icon: 'desktop',
-                        actions: actions
+                scope.listConfig = {
+                    ui: {
+                        flat: true,
+                        dark: true
                     },
-                    {
-                        id: '1',
-                        active: false,
-                        text: 'Birthday',
+                    clickHandler: clickHandler,
+                    items: []
+                };
+
+                _.each(scope.mueConfig.calendars, function (calendar) {
+                    scope.listConfig.items.push({
+                        _id: calendar._id,
+                        actions: actions,
                         icon: 'desktop',
-                        actions: actions
-                    }
-                ];
+                        text: calendar.name,
+                        active: calendar.active
+                    })
+                });
+
+                scope.add = function () {
+                    MueCalendarResource.create({
+                        name: 'Test name',
+                        description: 'Test description'
+                    }).then(function () {
+                        scope.listConfig.items.push({
+                            actions: actions,
+                            icon: 'desktop',
+                            text: 'Test name',
+                            active: false
+                        });
+                    });
+                };
+
+                scope.selectAll = function () {
+                    _.each(scope.listConfig.items, function (item) {
+                        item.active = true;
+                    });
+
+                    _.each(scope.mueConfig.calendars, function (calendar) {
+                        calendar.active = true;
+                    });
+                };
+
+                scope.deselectAll = function () {
+                    _.each(scope.listConfig.items, function (item) {
+                        item.active = false;
+                    });
+
+                    _.each(scope.mueConfig.calendars, function (calendar) {
+                        calendar.active = false;
+                    });
+                };
             }
         }
     });

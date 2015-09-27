@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('mue.core.user').factory('MueUserResource', function ($q, MueResource) {
+    angular.module('mue.core.resources').factory('MueUserResource', function ($q, MueResource) {
         var user = MueResource.one('account/user');
 
         return {
