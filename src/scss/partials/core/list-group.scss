@@ -66,33 +66,33 @@
   }
 
   &.mue-list-group-dark {
-    background: $gunpowder;
-    color: $coral;
+    color: $eight;
 
     .btn {
-      color: $coral;
+      color: $eight;
 
       &:hover {
-        color: $surf;
+        color: $eight;
       }
     }
 
     .list-group-item {
-      background: $gunpowder;
-      border-color: $gunpowder;
+      background: $flag;
+      border-color: $flag;
+      border-left: 5px solid $flag;
 
       &.active, &:hover, &:active {
-        background-color: $flag;
-        color: $banana;
+        background-color: $flag-dark;
+        color: white;
 
         .mue-item-description {
-          color: $coral;
+          color: $eight;
         }
       }
 
       &.active {
         &:hover {
-          background-color: $flag;
+          background-color: $flag-dark;
         }
       }
     }
@@ -101,7 +101,6 @@
   &.mue-list-group-flat {
     .list-group-item {
       border-right: 0;
-      border-left: 0;
     }
 
     .list-group-item:first-child {
@@ -112,6 +111,15 @@
     .list-group-item:last-child {
       border-radius: 0;
       border-bottom: none;
+    }
+  }
+
+
+  .list-group-item {
+    border-left: 5px solid white;
+
+    &:hover, &.active {
+      border-left: 5px solid $banana-dark;
     }
   }
 }

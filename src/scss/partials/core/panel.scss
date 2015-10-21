@@ -3,6 +3,13 @@
   border-width: 2px;
   min-height: 30px;
 
+  &.mue-panel-dark {
+    .panel-heading{
+      background: $flag-dark;
+      color: $cutlass;
+    }
+  }
+
   &.mue-panel-banana {
     .panel-heading{
       background: $banana;

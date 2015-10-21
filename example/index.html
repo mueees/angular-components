@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html ng-app="example">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../dist/styles.css"/>
+    <title>Components</title>
+</head>
+<body>
+
+<!-- Add libraries -->
+
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/lodash/lodash.js"></script>
+<script src="../bower_components/restangular/dist/restangular.js"></script>
+
+<script src="../dist/mue.js"></script>
+
+<script>
+    angular.module('example', []).controller('ExampleController', function ($scope) {
+        $scope.longText = 'Item example and Item example and Item example and Item example and Item example and Item example and Item example and Item example and';
+    });
+</script>
+
+<div ng-controller="ExampleController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h1>H1 Heading</h1>
+
+                        <h2>H2 Heading</h2>
+
+                        <h3>H3 Heading</h3>
+                        <h4>H4 Heading</h4>
+
+                        <p>Normal text</p>
+                        <a href="http://google.com">standart link</a>
+                    </div>
+                    <div class="col-md-3">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="panel mue-panel mue-image-card">
+                            <div class="mue-image-card-container" mue-image-resize>
+                                <img src="img/big.JPG" alt=""/>
+                            </div>
+                            <div class="panel-body">
+                                <div class="mue-card-icon">
+                                    <i class="fa fa-calendar mue-icon"></i>
+                                </div>
+
+                                <div class="mue-image-card-title">Article title</div>
+
+                                <div class="mue-image-card-content">
+                                    This is big image card content, that consist from text
+                                    This is big image card content, that consist from text
+                                    This is big image card content, that consist from text
+                                </div>
+                                <div class="mue-image-card-footer">
+                                    96 views
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="panel mue-panel mue-card mue-panel-lagoon">
+                            <div class="panel-body">
+                                <div class="mue-card-icon">
+                                    <i class="fa fa-calendar mue-icon"></i>
+                                </div>
+
+                                <h4 class="mue-card-title">Card title</h4>
+
+                                <div class="mue-card-description">
+                                    Card description
+                                </div>
+
+                                <button class="btn btn-action btn-strawberry btn-block">Action text</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="panel mue-panel mue-card mue-panel-lagoon">
+                            <div class="panel-heading">
+                                This is panel header
+                            </div>
+                            <div class="panel-body">
+                                <div class="mue-card-icon">
+                                    <i class="fa fa-calendar mue-icon"></i>
+                                </div>
+
+                                <h4 class="mue-card-title">Card title</h4>
+
+                                <div class="mue-card-description">
+                                    Card description
+                                </div>
+
+                                <button class="btn btn-action btn-strawberry btn-block">Action text</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="panel mue-panel mue-panel-dark">
+                            <div class="panel-heading">
+                                This is panel header
+                            </div>
+                            <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
+                                <div class="list-group-item">
+                                    <div class="mue-list-group-content">
+                                        Item example
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="mue-list-group-content">
+                                        Another one
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="mue-list-group-content">
+                                        Third item
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2>Components</h2>
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-lagoon">Lagoon</button>
+                <button class="btn btn-strawberry">Strawberry</button>
+                <button class="btn btn-banana">Banana</button>
+                <button class="btn btn-bruise">Bruise</button>
+                <button class="btn btn-neutral">Neutral</button>
+                <button class="btn btn-clear">Clear</button>
+
+                <br/>
+                <br/>
+
+                <button class="btn btn-action btn-lg btn-lagoon">Lagoon</button>
+                <button class="btn btn-action btn-sm btn-lagoon">Lagoon</button>
+                <button class="btn btn-action btn-xs btn-lagoon">Lagoon</button>
+            </div>
+            <div class="col-md-12">
+                <h3>List group</h3>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Standart list</h4>
+
+                        <div class="list-group mue-list-group ">
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Item example
+                                </div>
+                            </div>
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Another one
+                                </div>
+                            </div>
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Third item
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Flat list</h4>
+
+                        <div class="list-group mue-list-group mue-list-group-flat">
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Item example
+                                </div>
+                            </div>
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Another one
+                                </div>
+                            </div>
+                            <div class="list-group-item list-group-item-lagoon">
+                                <div class="mue-list-group-content">
+                                    Third item
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Dark list</h4>
+
+                        <div class="list-group mue-list-group mue-list-group-dark">
+                            <div class="list-group-item">
+                                <div class="mue-list-group-content">
+                                    Item example
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="mue-list-group-content">
+                                    Another one
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="mue-list-group-content">
+                                    Third item
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3>Header component</h3>
+
+                <div>
+                    <h1>Habrahabr.ru</h1>
+
+                    <div>
+                        <span>250 readers</span>
+                        <span> - </span>
+                        <a href="http://google.com">#programming</a>
+                        <a href="http://google.com">#for brain</a>
+                        <a href="http://google.com">#it</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4>Rss list</h4>
+
+                <div class="list-group mue-list-rss">
+                    <div class="list-group-item">
+                        <div class="list-group-item-description">
+                            <span class="mue-list-rss-title">Item example</span>
+                            <span class="mue-list-rss-description">{{longText}}</span>
+
+                            <div class="mue-list-rss-menu">
+                                <span>196 views</span>
+                                <span>10 hour 23 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="list-group-item-description">
+                            <span class="mue-list-rss-title">Item example</span>
+                            <span class="mue-list-rss-description">{{longText}}</span>
+
+                            <div class="mue-list-rss-menu">
+                                <span>196 views</span>
+                                <span>10 hour 23 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="list-group-item-full">
+                            <div class="mue-list-rss-close"></div>
+                            <h1>Habrahabr.ru</h1>
+
+                            <div>
+                                <span>7 views</span>
+                                <a href="http://google.com">#programming</a>
+                                <span>23 minutes</span>
+                                <a href="http://google.com">#for brain</a>
+                            </div>
+
+                            <br/>
+                            <br/>
+
+                            <div>
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                                Item example and Item example and Item example and Item example and Item example and
+                            </div>
+                            <div class="mue-list-rss-close"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
