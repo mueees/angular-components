@@ -141,6 +141,21 @@ module.exports = function (grunt) {
                         src: '**',
                         dest: '../calendar-client-angular/build/app/vendor/components',
                         flatten: false
+                    },
+
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: '**',
+                        dest: '../rabbit-client/app/vendor/components',
+                        flatten: false
+                    },
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: '**',
+                        dest: '../rabbit-client/build/app/vendor/components',
+                        flatten: false
                     }
                 ]
             }
