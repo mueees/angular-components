@@ -178,7 +178,7 @@ module.exports = function (grunt) {
         'copy:dist'
     ]);
 
-    grunt.registerTask('dev', function () {
+    grunt.registerTask('debug', function () {
         grunt.task.run('dist');
         grunt.task.run('watch');
     });

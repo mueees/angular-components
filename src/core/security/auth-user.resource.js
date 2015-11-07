@@ -118,10 +118,8 @@
                 };
 
                 function login() {
-                    if (!provide) {
-                        provide = new Provide();
-                        return provide.open();
-                    }
+                    provide = new Provide();
+                    return provide.open();
                 }
 
                 if (!applicationOauthKey) {
