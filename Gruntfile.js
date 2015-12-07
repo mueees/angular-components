@@ -26,7 +26,9 @@ module.exports = function (grunt) {
         clean: {
             docs: '<%= docsDir %>',
             dist: '<%= distDir %>',
-            temp: '<%= tempDir %>'
+            temp: '<%= tempDir %>',
+            rabbit: '../rabbit-client/app/vendor/components/*',
+            options: { force: true }
         },
         ngdocs: {
             options: {
@@ -66,15 +68,15 @@ module.exports = function (grunt) {
         watch: {
             sass: {
                 files: ['<%= srcDir %>/scss/**/*.scss'],
-                tasks: ['clean:docs', 'sass:dist', 'concat:css', 'copy:dist']
+                tasks: ['clean:docs', 'sass:dist', 'concat:css', 'copy:main', 'clean:rabbit', 'copy:dist']
             },
             js: {
                 files: ['<%= srcDir %>/core/mue.module.js', jsFiles],
-                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'copy:dist']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'clean:rabbit', 'copy:dist']
             },
             html: {
                 files: ['<%= srcDir %>/core/**/*.html'],
-                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'copy:dist']
+                tasks: ['ngtemplates:dist', 'concat:js', 'ngAnnotate:main', 'uglify:js', 'clean:temp', 'clean:rabbit', 'copy:dist']
             }
         },
         concat: {
@@ -149,13 +151,6 @@ module.exports = function (grunt) {
                         src: '**',
                         dest: '../rabbit-client/app/vendor/components',
                         flatten: false
-                    },
-                    {
-                        expand: true,
-                        cwd: 'dist',
-                        src: '**',
-                        dest: '../rabbit-client/build/app/vendor/components',
-                        flatten: false
                     }
                 ]
             }
@@ -175,6 +170,7 @@ module.exports = function (grunt) {
         'copy:main',
         'uglify:js',
         'clean:temp',
+        'clean:rabbit',
         'copy:dist'
     ]);
 

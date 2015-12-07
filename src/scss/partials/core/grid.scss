@@ -1,0 +1,77 @@
+mue-container {
+  display: block;
+}
+
+mue-sidebar {
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 50;
+
+  .mue-sidebar-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+
+  .mue-sidebar-navs {
+    display: none;
+  }
+
+  @include tablet {
+    transform: translateX(-100%);
+
+    .mue-sidebar-navs {
+      display: block;
+      position: relative;
+      z-index: 150;
+
+      button {
+        position: absolute;
+      }
+
+      .mue-sidebar-navs-open {
+        top: 5px;
+        right: -45px;
+      }
+
+      .mue-sidebar-navs-close {
+        right: 15px;
+      }
+    }
+
+    &.mue-sidebar-open {
+      transform: translateX(0);
+      width: 100%;
+    }
+  }
+}
+
+mue-content {
+  display: block;
+  padding: $content-padding;
+  margin-left: $sidebar-width;
+
+  @include tablet {
+    margin-top: 65px;
+    margin-left: 0;
+    padding: 0 10px;
+  }
+}
+
+.mue-content-wrapper {
+  margin: 0 auto;
+
+  @include wide {
+    width: 85%;
+  }
+
+  @include desktop {
+    width: 95%;
+  }
+}

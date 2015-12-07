@@ -1,1 +1,9 @@
-<div class="col-sm-4 col-md-3 mue-sidebar mue-no-padding" ng-transclude></div>
+<div class="mue-sidebar-navs">
+    <button class="btn btn-lg  mue-sidebar-navs-open" ng-if="!isOpen" ng-click="open()">
+        <i class="fa fa-th-large mue-icon"></i>
+    </button>
+    <button class="btn btn-lg btn-clear mue-sidebar-navs-close" ng-if="isOpen" ng-click="close()">
+        <i class="fa fa-close mue-icon"></i>
+    </button>
+</div>
+<div class="mue-sidebar-content" ng-transclude></div>
