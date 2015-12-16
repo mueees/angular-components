@@ -7,6 +7,6 @@
             getCurrentUser: function () {
                 return user.get();
             }
-        }
+        };
     });
 })();

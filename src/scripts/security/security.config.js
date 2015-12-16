@@ -11,7 +11,7 @@
 
                     return $q.reject(response);
                 }
-            }
+            };
         });
     });
 })();

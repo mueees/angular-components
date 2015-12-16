@@ -34,7 +34,7 @@ angular.module('mue.core.components.header')
             link: function (scope) {
                 scope.logoutHandler = function () {
                     mueAuthentication.logout();
-                }
+                };
             }
-        }
+        };
     });

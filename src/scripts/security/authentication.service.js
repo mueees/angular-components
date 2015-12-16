@@ -191,7 +191,7 @@
 
                 MueResource.addFullRequestInterceptor(function (element, operation, route, url, headers, params, httpConfig) {
                     if(mueToken.hasToken()){
-                        headers['Authorization'] = 'Bearer ' + mueToken.getToken();
+                        headers.Authorization = 'Bearer ' + mueToken.getToken();
                     }
 
                     return {

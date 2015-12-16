@@ -20,5 +20,5 @@ angular.module('mue.core.components.sidebar')
 
                 $rootScope.$on('mueSidebar:close', $scope.close);
             }
-        }
+        };
     });

@@ -1,34 +1,3 @@
-/**
- * @ngdoc directive
- * @name mue.core.date-switcher.directive:mueDateSwitcher
- * @restrict E
- * @element mue-date-switcher
- *
- * @description
- * Test
- *
- *
- <example module="test">
-
- <file name="index.html">
- <div ng-controller="Test">
- <mue-date-switcher mue-config="config"></mue-date-switcher>
- </div>
- </file>
-
- <file name="script.js">
- angular.module('test', ['mue.core.date-switcher']).controller('Test', function($scope){
-     $scope.config = {
-            type: 2,
-            start: new Date(),
-            end: moment(new Date()).add(5, 'd').toDate()
-        };
- });
- </file>
-
- </example>
- */
-
 angular.module('mue.core.components.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
@@ -101,5 +70,5 @@ angular.module('mue.core.components.date-switcher')
 
                 scope.dateViewerConfiguration = scope.mueConfig;
             }
-        }
+        };
     });

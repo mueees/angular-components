@@ -73,6 +73,18 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['dev']);
 
+    grunt.registerTask('release', 'Main task for production, to create minified app', [
+        'validation-wrapper',
+        'sass:release',
+        'tests-wrapper',
+        'clean:all',
+        'sync:resources',
+        'concat',
+        'ngAnnotate',
+        'ngtemplates',
+        'uglify'
+    ]);
+
     // Load all tasks
     require('load-grunt-config')(grunt, {
         configPath: path.join(process.cwd(), 'grunt'),

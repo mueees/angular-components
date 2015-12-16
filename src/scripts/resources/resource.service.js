@@ -12,7 +12,7 @@
             $get: function (Restangular) {
                 return Restangular.withConfig(function (RestangularConfigurer) {
                     RestangularConfigurer.setBaseUrl(baseUrl);
-                })
+                });
             }
         };
     });

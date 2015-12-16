@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function () {
     'use strict';
 
     return {
@@ -8,9 +8,9 @@ module.exports = function (grunt) {
             verbose: false
         },
         targetName: {
-            files: [
-                '<%= src %>/scripts/**/*.js'
-            ]
+            files: {
+                src: '<%= src %>/scripts/**/*.js'
+            }
         }
-    }
+    };
 };
