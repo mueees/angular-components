@@ -1,0 +1,12 @@
+{
+  "release": {},
+  "debug": {
+    "scripts": [
+      "<%= vendor%>/angular/angular.js"
+    ]
+  },
+  "test": {
+    "scripts": [],
+    "css": []
+  }
+}
