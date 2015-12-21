@@ -24,17 +24,17 @@
  */
 
 angular.module('mue.core.components.header')
-    .directive('mueHeader', function (mueAuthentication) {
+    .directive('mueHeader', function (mueAuthProxy) {
         return {
             restrict: 'E',
-            templateUrl: 'src/core/components/header/header.directive.html',
+            templateUrl: 'scripts/components/header/header.directive.html',
+
             scope: {
                 mueConfig: '='
             },
+
             link: function (scope) {
-                scope.logoutHandler = function () {
-                    mueAuthentication.logout();
-                };
+                scope.logoutHandler = mueAuthProxy.logout;
             }
         };
     });

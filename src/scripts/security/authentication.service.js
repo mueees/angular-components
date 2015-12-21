@@ -81,8 +81,10 @@
 
         return {
             loginState: loginState,
+
             appState: appState,
-            $get: function ($state, $rootScope, $q, mueAuthUserResource, MueUserResource, MueResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
+
+            $get: function ($state, $rootScope, $q, MueUserResource, MueResource, mueSession, mueToken, MUE_AUTH_EVENTS) {
                 if (!_loginState || !_loginState.name || !_appState) {
                     throw new Error('mueAuthentication service has not been configured properly.');
                 }
@@ -91,34 +93,7 @@
 
                 /**
                  * @ngdoc method
-                 * @name mueAuthentication#login
-                 *
-                 * @description
-                 * Authenticates the user.
-                 */
-                function login() {
-                    return mueAuthUserResource.login();
-                }
-
-                /**
-                 * @ngdoc method
-                 * @name mueAuthentication#logout
-                 *
-                 * @description
-                 * Signs the user out of the application.
-                 *
-                 * @returns {Promise} A promise that will be resolved when a user is logged out, or if the logout failed.
-                 */
-                function logout() {
-                    mueToken.destroy();
-                    mueSession.destroy();
-
-                    $rootScope.$broadcast(MUE_AUTH_EVENTS.logoutSuccess);
-                }
-
-                /**
-                 * @ngdoc method
-                 * @name rxAuthentication#initSession
+                 * @name mueAuthentication#initSession
                  *
                  * @description
                  * Initializes session by loading details for current user.
@@ -181,7 +156,11 @@
                 $rootScope.$on(MUE_AUTH_EVENTS.loginSuccess, _loginSuccessHandler);
 
                 function _onLogout() {
+                    mueToken.destroy();
+                    mueSession.destroy();
+
                     afterLoginState = _appState;
+
                     _redirectToLoginState();
                 }
 
@@ -203,8 +182,6 @@
                 });
 
                 return {
-                    login: login,
-                    logout: logout,
                     initSession: initSession
                 };
             }

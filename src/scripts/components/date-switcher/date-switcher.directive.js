@@ -2,7 +2,7 @@ angular.module('mue.core.components.date-switcher')
     .directive('mueDateSwitcher', function () {
         return {
             restrict: 'E',
-            templateUrl: 'src/core/components/date-switcher/date-switcher.directive.html',
+            templateUrl: 'scripts/components/date-switcher/date-switcher.directive.html',
             scope: {
                 mueConfig: '='
             },

@@ -1,6 +1,5 @@
 (function(){
     angular.module('mue.core.components.login', [
-        'mue.template',
-        'mue.core.security'
+        'mue.core.auth-proxy'
     ]);
 })();

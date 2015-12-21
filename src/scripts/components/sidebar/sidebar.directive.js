@@ -6,7 +6,7 @@ angular.module('mue.core.components.sidebar')
             scope: {
                 mueConfig: '='
             },
-            templateUrl: 'src/core/components/sidebar/sidebar.directive.html',
+            templateUrl: 'scripts/components/sidebar/sidebar.directive.html',
             link: function ($scope, element) {
                 $scope.open = function () {
                     $scope.isOpen = true;

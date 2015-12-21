@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('mue.core.security').provider('mueAuthUserResource', function () {
+    angular.module('mue.core.auth-proxy').provider('mueAuthProxy', function () {
         var applicationOauthKey = null,
             timeout = 1000 * 60 * 2,
             origin = 'http://proxy.mue.in.ua',
@@ -25,15 +25,14 @@
 
             config: config,
 
-            $get: function ($q) {
+            $get: function ($q, $rootScope, MUE_AUTH_EVENTS) {
                 function Provide() {
                     this.timeout = 1000 * 60; // on minute
                     this.initialize();
                 }
 
                 Provide.prototype = {
-                    initialize: function () {
-                    },
+                    initialize: function () {},
 
                     open: function () {
                         var me = this;
@@ -118,8 +117,13 @@
                 };
 
                 function login() {
-                    provide = new Provide();
-                    return provide.open();
+                    (new Provide()).open().then(function (data) {
+                        $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess, data);
+                    });
+                }
+
+                function logout() {
+                    $rootScope.$broadcast(MUE_AUTH_EVENTS.logoutSuccess);
                 }
 
                 if (!applicationOauthKey) {
@@ -127,7 +131,8 @@
                 }
 
                 return {
-                    login: login
+                    login: login,
+                    logout: logout
                 };
             }
         };
